@@ -21,6 +21,7 @@ app.post("/checkout", async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       line_items: lineItems,
       mode: "payment",
+      allow_promotion_codes: true,
       success_url: `${YOUR_DOMAIN}/valid`,
       cancel_url: `${YOUR_DOMAIN}/cart`,
       automatic_tax: { enabled: true },
